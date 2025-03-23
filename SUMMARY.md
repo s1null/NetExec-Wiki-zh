@@ -21,6 +21,7 @@
 * [目标格式](getting-started/target-formats.md)
 * [使用凭证](getting-started/using-credentials.md)
 * [使用 Kerberos](getting-started/using-kerberos.md)
+* [使用证书](getting-started/using-certificates.md)
 * [使用模块](getting-started/using-modules.md)
 * [🆕 DNS 选项](getting-started/dns-options.md)
 * [数据库基本使用](getting-started/database-general-usage.md)
@@ -34,6 +35,7 @@
 * [漏洞扫描](smb-protocol/scan-for-vulnerabilities.md)
 * [枚举](smb-protocol/enumeration/README.md)
   * [生成主机文件](smb-protocol/enumeration/generate-hosts-file.md)
+  * [生成 krb5 配置文件](smb-protocol/enumeration/generate-krb5-conf-file.md)
   * [枚举主机](smb-protocol/enumeration/enumerate-hosts.md)
   * [枚举空会话](smb-protocol/enumeration/enumerate-null-sessions.md)
   * [枚举访客登录](smb-protocol/enumeration/enumerate-guest-logon.md)
@@ -153,3 +155,7 @@
 
 * [🆕 枚举](nfs-protocol/Enumeration.md)
 * [🆕 文件下载和上传](nfs-protocol/Download-and-Upload-Files.md)
+
+***
+
+* [🆕 逃逸到根文件系统](escape-to-root-file-system.md)
