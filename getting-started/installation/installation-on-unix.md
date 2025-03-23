@@ -71,20 +71,6 @@ poetry install
 poetry run NetExec
 ```
 
-## 使用 pip 安装 NetExec :no_entry:
-
-{% hint style="warning" %}
-建议使用 pipx 而不是 pip
-{% endhint %}
-
-<pre><code><strong>sudo apt install python3 python3-pip
-</strong>git clone https://github.com/Pennyw0rth/NetExec
-cd NetExec
-python3 -m venv .
-source bin/activate
-pip install .
-NetExec
-</code></pre>
 
 ## 二进制文件
 
