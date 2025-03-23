@@ -1,27 +1,27 @@
-# 🆕 Escape to root file system
+# 🆕 逃逸到根文件系统
 
-By default, NFS exports do not restrict access to files outside the exported directory. To access these files NFS needs the respective file handle. However, the root file handle `/` has a static value, which is file system dependend. Therefore, if one of the shares do not restrict access to the export directory by setting the `"subtree_check"` flag in their config, it is possible to query to root file system and from there every single file on the system.&#x20;
+默认情况下，NFS 导出不会限制对导出目录以外文件的访问。要访问这些文件，NFS 需要相应的文件句柄。然而，根文件句柄 `/` 具有静态值，这取决于文件系统。因此，如果其中一个共享在其配置中没有通过设置 `"subtree_check"` 标志来限制对导出目录的访问，就可以查询根文件系统，从而访问系统上的每个文件。
 
-NetExec automatically checks for this "escape to root" on connection, as can be seen by the flag:
+NetExec 在连接时会自动检查这种"逃逸到根"的情况，如下面的标志所示：
 
 ```
 NFS         <ip>  <port>  <ip>   [*] Supported NFS versions: (3, 4) (root escape:False)
 ```
 
-This can be leveraged to access all files on the system which are not `root:root` owned, meaning all some non-root identity has read access to the file. A prominent example is the `/etc/shadow` file, which is owned by `root:shadow`. Furthermore, if the options "no\_root\_squash" is set, also root:root files can be read. In combination with the `"rw"` flag, anyone can also upload and overwrite any files on the system and therefore just add themselves as a user.
+这可以用来访问系统上所有非 `root:root` 所有的文件，也就是说所有某些非 root 身份有读取权限的文件。一个典型的例子是 `/etc/shadow` 文件，它归 `root:shadow` 所有。此外，如果设置了 "no_root_squash" 选项，也可以读取 root:root 文件。结合 `"rw"` 标志，任何人都可以上传和覆盖系统上的任何文件，因此可以轻松将自己添加为用户。
 
-**Recommendation:** The file `/etc/exports` defines all exported directories with their config and is world readable. If you find a host where the root escape is possible, first download the file and check which options are available to you.
+**建议：** 文件 `/etc/exports` 定义了所有导出目录及其配置，并且对所有人可读。如果你发现一个可以进行根逃逸的主机，首先下载该文件并检查有哪些可用选项。
 
-### Leveraging the root escape
+### 利用根逃逸
 
-NetExec will automatically try to use the root escape if no share was specified in the command.&#x20;
+当命令中未指定共享时，NetExec 将自动尝试使用根逃逸。
 
-Example for  `--ls`:
+`--ls` 的例子：
 
 ```
 NetExec nfs <ip> --ls '/'
 
-# Example Output
+# 示例输出
 NFS         <ip>  <port>  <ip>   [*] Supported NFS versions: (3, 4) (root escape:True)
 NFS         <ip>  <port>  <ip>   [+] Successful escape on share: /var/nfs/general
 NFS         <ip>  <port>  <ip>   UID        Perms  File Size     File Path
@@ -35,13 +35,13 @@ NFS         <ip>  <port>  <ip>   0          dr--   12.0KB        /etc
 ...
 ```
 
-### Owning the system: Demo
+### 获取系统控制权：演示
 
-As mentioned above, when the options `(rw,no_root_squash)` are set, you can simply download the files `/etc/shadow` and `/etc/passwd`, add yourself and reupload them:
+如上所述，当设置了 `(rw,no_root_squash)` 选项时，您可以简单地下载 `/etc/shadow` 和 `/etc/passwd` 文件，添加自己，然后重新上传它们：
 
-<figure><img src=".gitbook/assets/nfs_create_backdoor.png" alt=""><figcaption><p>Owning a system with NFS</p></figcaption></figure>
+<figure><img src=".gitbook/assets/nfs_create_backdoor.png" alt=""><figcaption><p>通过 NFS 获取系统控制权</p></figcaption></figure>
 
-### Additional sources:
+### 额外资源：
 
 {% embed url="https://www.hvs-consulting.de/en/nfs-security-identifying-and-exploiting-misconfigurations/" %}
 

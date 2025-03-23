@@ -1,8 +1,8 @@
 ---
-description: Using Certificates authentication with NetExec
+description: 在 NetExec 中使用证书进行身份认证
 ---
 
-# Using Certificates
+# 使用证书
 
 ```
 netexec smb 192.168.0.1 --pfx-cert user.pfx -u user 
@@ -21,6 +21,5 @@ netexec smb 192.168.0.1 --pem-cert user.pem --pem-key key.pem -u user
 ```
 
 {% hint style="info" %}
-When authenticate with a certificate, nxc will generate a ccache file inside nxc home directory, you can also use this ccache to authenticate with kerberos for other tools
+当使用证书进行身份验证时，nxc 会在 nxc 主目录中生成一个 ccache 文件，您也可以使用这个 ccache 文件为其他工具进行 kerberos 身份验证
 {% endhint %}
-
