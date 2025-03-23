@@ -4,4 +4,4 @@
 
 
 
-<figure><img src="https://github.com/s1null/NetExec-Wiki-zh/blob/main/.gitbook/assets/404540940-ea42cc9d-5c4c-453d-bb18-6360c5b8154b.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/404540940-ea42cc9d-5c4c-453d-bb18-6360c5b8154b.png" alt=""><figcaption></figcaption></figure>
